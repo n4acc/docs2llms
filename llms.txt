@@ -1,0 +1,121 @@
+# Documentation | fal.ai Docs
+
+> Comprehensive documentation, examples, and guides for using fal.ai's AI infrastructure and client libraries.
+
+
+## Getting Started
+
+
+- [Introduction | fal.ai Docs](https://docs.fal.ai/introduction)
+  Learn how to quickly get started with fal, including setting up API keys and using popular model endpoints for Stable Diffusion models.
+
+- [Quickstart with fal | fal.ai Docs](https://docs.fal.ai/quick-start)
+  Learn how to quickly get started with fal, including setting up API keys and using popular model endpoints for Stable Diffusion models.
+
+- [Real Time Models Quickstart | fal.ai Docs](https://docs.fal.ai/real-time/quickstart)
+  Get started quickly with fal by following this guide, including setup, installation, and basic usage to begin leveraging fal's capabilities.
+
+## Model Endpoints
+
+
+- [Keeping fal API Secrets Safe | fal.ai Docs](https://docs.fal.ai/model-endpoints/queue)
+  Learn how to use fal's queue system for handling long-running AI requests, including adding, monitoring, and canceling requests efficiently.
+
+- [Model Endpoints | fal.ai Docs](https://docs.fal.ai/model-endpoints)
+  Learn how to interact with fal API model endpoints using simple HTTP APIs, including calling endpoints through the Queue system and retrieving results.
+
+- [Server-side integration | fal.ai Docs](https://docs.fal.ai/model-endpoints/server-side)
+  Learn how to securely integrate fal API with your server-side code, including ready-to-use proxy implementations and custom proxy guidelines.
+
+- [Webhooks | fal.ai Docs](https://docs.fal.ai/model-endpoints/webhooks)
+  Learn how to use webhooks with fal's queue system to receive notifications when requests are completed, enabling efficient asynchronous operations.
+
+- [Workflow endpoints | fal.ai Docs](https://docs.fal.ai/model-endpoints/workflows)
+  Learn how to chain multiple models together using fal's workflow endpoints to create complex pipelines, enabling efficient multi-step AI tasks.
+
+## Client SDKs
+
+
+- [Client libraries | fal.ai Docs](https://docs.fal.ai/clients)
+  Discover official fal client libraries for JavaScript, Python, Swift, Java, and Kotlin. Join our Discord to request support for additional languages.
+
+- [Client Library for Dart (Flutter) | fal.ai Docs](https://docs.fal.ai/clients/dart)
+  Learn how to integrate fal with your Dart (Flutter) projects, including installation, calling endpoints, and managing requests with the fal client.
+
+- [Client Library for Java | fal.ai Docs](https://docs.fal.ai/clients/java)
+  Learn how to integrate fal with your Java projects, including installation, calling endpoints, and managing requests with the fal client.
+
+- [Client Library for JavaScript / TypeScript | fal.ai Docs](https://docs.fal.ai/clients/javascript)
+  Learn how to integrate fal with your JavaScript or TypeScript projects, including installation, calling endpoints, and managing requests with the fal client.
+
+- [Client Library for Kotlin | fal.ai Docs](https://docs.fal.ai/clients/kotlin)
+  Learn how to integrate fal with your Kotlin projects, including installation, calling endpoints, and managing requests with the fal client.
+
+- [Client Library for Python | fal.ai Docs](https://docs.fal.ai/clients/python)
+  Learn how to integrate fal with your Python projects, including installation, calling endpoints, and managing requests with the fal client.
+
+- [Client Library for Swift (iOS) | fal.ai Docs](https://docs.fal.ai/clients/swift)
+  Learn how to integrate fal with your Swift (iOS) projects, including installation, calling endpoints, and managing requests with the fal client.
+
+## Authentication
+
+
+- [GitHub Authentication | fal.ai Docs](https://docs.fal.ai/authentication/github)
+  Learn how to authenticate with fal using your GitHub account, including steps for logging in and handling enterprise features.
+
+- [Key-Based Authentication | fal.ai Docs](https://docs.fal.ai/authentication/key-based)
+  Learn how to use key-based authentication for fal, including generating keys, understanding scopes, and using keys in CI/CD and remote environments.
+
+- [Setting secrets | fal.ai Docs](https://docs.fal.ai/private-serverless-models/setting-secrets)
+  Learn how to set and manage sensitive information like API keys and database credentials in fal functions using the fal secrets CLI interface.
+
+## Private Serverless
+
+
+- [Introduction to Private Serverless Models | fal.ai Docs](https://docs.fal.ai/private-serverless-models/accessing-persistent-storage)
+  Learn how to use fal's persistent storage for serverless functions, enabling data persistence across isolated environments for various use cases.
+
+- [Optimizing Routing Behavior | fal.ai Docs](https://docs.fal.ai/private-serverless-models/hot-model-routing)
+  Learn how to optimize routing behavior for applications with multiple replicas using semantically-aware routing hints to minimize cache misses.
+
+- [Passing arguments and leveraging Pydantic | fal.ai Docs](https://docs.fal.ai/private-serverless-models/pydantic)
+  Learn how to use Pydantic for data validation in fal applications, including setting optional parameters, default values, and applying constraints.
+
+- [Real-time endpoints & WebSockets | fal.ai Docs](https://docs.fal.ai/private-serverless-models/real-time-endpoints)
+  Learn how to implement real-time endpoints and WebSockets in fal applications for low-latency and stateful real-time communication.
+
+- [Returning files and images from functions | fal.ai Docs](https://docs.fal.ai/private-serverless-models/return-files-and-images)
+  Learn how to return files and images from fal functions, including using fal's file and image classes for simplified handling and secure access.
+
+- [Running a containerized application | fal.ai Docs](https://docs.fal.ai/private-serverless-models/running-containerized-model)
+  Learn how to run a containerized application with fal, including converting existing examples into containerized applications for better scalability.
+
+- [Runtime Model Optimizations | fal.ai Docs](https://docs.fal.ai/private-serverless-models/runtime-optimization)
+  Learn how to optimize runtime models with fal's inference engine, including dynamic compilation and quantization techniques for improved performance.
+
+## Guides
+
+
+- [Cache-Efficient Dockerfile Guidelines with docker buildx (or buildKit) | fal.ai Docs](https://docs.fal.ai/guidelines/dockerfile)
+  Learn how to create cache-efficient Dockerfiles using Docker Buildx and BuildKit to improve build times and reduce resource consumption.
+
+## Reference
+
+
+- [Container Support with fal | fal.ai Docs](https://docs.fal.ai/examples/running-a-container)
+  Learn how to run functions within custom Docker containers using fal, providing greater flexibility and control over your environment.
+
+- [Documentation | fal.ai Docs](https://docs.fal.ai/)
+  Comprehensive documentation, examples, and guides for using fal.ai's AI infrastructure and client libraries.
+
+- [Fastest FLUX Endpoint | fal.ai Docs](https://docs.fal.ai/fast-flux)
+  Learn how to use fal's fastest FLUX endpoint, including setup, API key creation, and making API calls with the fal JavaScript client.
+
+- [Frequently Asked Questions | fal.ai Docs](https://docs.fal.ai/faq)
+  Find answers to common questions about fal.ai, including file retention, commercial use, rate limits, charges for failed requests, and credit expiration.
+
+- [Real-Time Models | fal.ai Docs](https://docs.fal.ai/real-time)
+  Discover how to leverage fal's real-time AI models, including Latent Consistency Models and SDXL Turbo, for fast image generation and creative tools.
+
+- [Supported Machines | fal.ai Docs](https://docs.fal.ai/supported-machines)
+  Learn about the different machine types supported by fal, including specifications and how to set the machine type for your fal functions.

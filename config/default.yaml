@@ -1,0 +1,29 @@
+# Crawler settings
+max_pages: 100
+max_depth: 3
+pages_per_minute: 10
+wait_time_between_chunks: 30
+retry_attempts: 3
+
+# Content patterns
+exclude_patterns:
+  - '.*(\.pdf|\.zip|\.js|\.css|\.png|\.jpg|\.jpeg|\.gif)$'
+  - '.*/static/.*'
+  - '.*/assets/.*'
+  - '.*/blog/.*'
+  - '.*/changelog/.*'
+include_patterns:
+  - '.*/docs/.*'
+  - '.*/documentation/.*'
+  - '.*/guide/.*'
+  - '.*/tutorial/.*'
+
+# Processing options
+clean_html: true
+extract_code_blocks: true
+include_headers: true
+max_section_depth: 3
+
+# Output format
+format: "llms.txt"
+include_metadata: true
