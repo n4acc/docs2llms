@@ -1,41 +1,45 @@
 # docs2llms
 
-> A tool to convert documentation websites into LLM-friendly formats. It generates both an llms.txt file (following the llms.txt specification) and markdown files for each documentation page.
-
-⚠️ Warning: This is version 0.1 and is quite buggy. Use at your own risk.
-
-This tool is designed to help:
-
-- Create standardized llms.txt files from documentation websites
-- Generate clean markdown versions of documentation for LLM context 
-- Make documentation more accessible to AI assistants
-- Support the llms.txt standard for better AI-documentation interaction
+A Python tool to convert website documentation into LLM-friendly formats, following the llms.txt specification.
 
 ## Installation
 
-```bash
-pip install docs2llms
+Clone the repository and install locally:
+
+```
+# Clone the repository
+git clone https://github.com/n4acc/docs2llms.git
+cd docs2llms
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install the package
+pip install -e .
 ```
 
 ## Usage
 
 Basic usage:
 
-```bash
-# Generate both llms.txt and markdown files
-docs2llms https://docs.example.com/ -o llms.txt -m docs/
-
-# Only generate llms.txt
-docs2llms https://docs.example.com/ -o llms.txt
-
-# Enable verbose logging
-docs2llms https://docs.example.com/ -v
-
-# Enable debug logging
-docs2llms https://docs.example.com/ -d
+```
+docs2llms https://docs.example.com -o llms.txt
 ```
 
-### Options
+Save markdown files:
+
+```
+docs2llms https://docs.example.com -m docs/
+```
+
+Create a single markdown file with all documentation:
+
+```
+docs2llms https://docs.example.com --megadump complete_docs.md
+```
+
+### CLI Options
 
 - `url`: The URL of the documentation to convert
 - `-o, --output`: Output file path (default: llms.txt)
@@ -46,6 +50,38 @@ docs2llms https://docs.example.com/ -d
 - `-d, --debug`: Enable debug output
 - `--include-related`: Include related pages section in markdown files (disabled by default)
 
+### Examples
+
+Convert documentation and save individual markdown files:
+
+```
+docs2llms https://docs.example.com -m docs/
+```
+
+Create a complete documentation file:
+
+```
+docs2llms https://docs.example.com --megadump complete_docs.md
+```
+
+Save both individual files and complete documentation:
+
+```
+docs2llms https://docs.example.com -m docs/ --megadump complete_docs.md
+```
+
+Include related pages in markdown files:
+
+```
+docs2llms https://docs.example.com -m docs/ --include-related
+```
+
+Enable verbose logging:
+
+```
+docs2llms https://docs.example.com -v
+```
+
 ## Features
 
 - Converts documentation to llms.txt format
@@ -54,24 +90,20 @@ docs2llms https://docs.example.com/ -d
 - Configurable crawling depth and limits
 - Support for JavaScript-rendered content
 - Clean output without navigation elements and unwanted content
-  
-### Current Limitations
 
-- May miss some documentation pages due to JavaScript rendering
-- Link extraction can be unreliable
-- Memory usage may be high for large documentation sites
-- Limited handling of complex navigation structures
-- Some markdown formatting may be lost in conversion
+## Development
 
-### Contributing
+To set up for development:
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+```
+# Clone the repository
+git clone https://github.com/n4acc/docs2llms.git
+cd docs2llms
 
-### License
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
-MIT License
-
-### Acknowledgments
-
-This project is inspired by the llms.txt specification by Jeremy Howard.
-
+# Install in editable mode with development dependencies
+pip install -e ".[dev]"
+```
