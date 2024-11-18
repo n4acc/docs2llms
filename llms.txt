@@ -18,9 +18,6 @@
 ## Model Endpoints
 
 
-- [Keeping fal API Secrets Safe | fal.ai Docs](https://docs.fal.ai/model-endpoints/queue)
-  Learn how to use fal's queue system for handling long-running AI requests, including adding, monitoring, and canceling requests efficiently.
-
 - [Model Endpoints | fal.ai Docs](https://docs.fal.ai/model-endpoints)
   Learn how to interact with fal API model endpoints using simple HTTP APIs, including calling endpoints through the Queue system and retrieving results.
 
@@ -62,6 +59,9 @@
 
 - [GitHub Authentication | fal.ai Docs](https://docs.fal.ai/authentication/github)
   Learn how to authenticate with fal using your GitHub account, including steps for logging in and handling enterprise features.
+
+- [Keeping fal API Secrets Safe | fal.ai Docs](https://docs.fal.ai/real-time/secrets)
+  Learn how to securely manage fal API secrets for real-time models using WebSockets, including using JWT tokens and server-side proxies for authentication.
 
 - [Key-Based Authentication | fal.ai Docs](https://docs.fal.ai/authentication/key-based)
   Learn how to use key-based authentication for fal, including generating keys, understanding scopes, and using keys in CI/CD and remote environments.

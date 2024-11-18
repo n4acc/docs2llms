@@ -13,7 +13,8 @@ from playwright.async_api import async_playwright
 @click.option('--config', '-c', help='Path to config file')
 @click.option('--verbose', '-v', is_flag=True, help='Enable verbose output')
 @click.option('--debug', '-d', is_flag=True, help='Enable debug output')
-def main(url: str, output: str, markdown_dir: str, config: str, verbose: bool, debug: bool):
+@click.option('--include-related', is_flag=True, help='Include related pages section in markdown files')
+def main(url: str, output: str, markdown_dir: str, config: str, verbose: bool, debug: bool, include_related: bool):
     """Main CLI entry point"""
     # Setup logging
     log_level = logging.DEBUG if debug else (logging.INFO if verbose else logging.WARNING)
@@ -40,7 +41,10 @@ def main(url: str, output: str, markdown_dir: str, config: str, verbose: bool, d
             browser = await p.chromium.launch()
             context = await browser.new_context()
             try:
-                return await converter._crawl_pages(context, url, save_markdown=bool(markdown_dir))
+                return await converter._crawl_pages(context, url, 
+                                                 save_markdown=bool(markdown_dir),
+                                                 markdown_dir=markdown_dir,
+                                                 include_related=include_related)
             finally:
                 await context.close()
                 await browser.close()
@@ -50,7 +54,7 @@ def main(url: str, output: str, markdown_dir: str, config: str, verbose: bool, d
     
     # Generate markdown files if requested
     if markdown_dir:
-        converter.save_markdown_files(pages, markdown_dir)
+        converter.save_markdown_files(pages, markdown_dir, include_related)
     
     # Generate llms.txt
     result = converter._generate_llms_txt(pages)

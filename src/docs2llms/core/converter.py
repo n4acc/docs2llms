@@ -129,7 +129,8 @@ class Docs2LLMs:
         
         return "\n".join(output)
 
-    async def _crawl_pages(self, context, start_url: str, *, save_markdown: bool = False) -> List[Dict]:
+    async def _crawl_pages(self, context, start_url: str, *, save_markdown: bool = False, 
+                          markdown_dir: str = None, include_related: bool = False) -> List[Dict]:
         """Crawl documentation pages using a queue-based approach"""
         pages = []
         self.visited_urls: Set[str] = set()
@@ -142,8 +143,8 @@ class Docs2LLMs:
         
         # Setup markdown directory if needed
         output_path = None
-        if save_markdown:
-            output_path = Path('docs')
+        if save_markdown and markdown_dir:
+            output_path = Path(markdown_dir)  # Use the provided directory name
             output_path.mkdir(parents=True, exist_ok=True)
         
         async def process_page(url: str, depth: int) -> List[str]:
@@ -215,7 +216,7 @@ class Docs2LLMs:
                         file_path = output_path / f"{relative_url}.md"
                         file_path.parent.mkdir(parents=True, exist_ok=True)
                         
-                        markdown_content = self._generate_page_markdown(page_data)
+                        markdown_content = self._generate_page_markdown(page_data, include_related)
                         
                         self.logger.debug(f"Saving markdown to: {file_path}")
                         with open(file_path, 'w', encoding='utf-8') as f:
@@ -489,7 +490,7 @@ class Docs2LLMs:
         if hasattr(self, 'progress'):
             self.progress.close()
 
-    def save_markdown_files(self, pages: List[Dict], output_dir: str):
+    def save_markdown_files(self, pages: List[Dict], output_dir: str, include_related: bool = False):
         """Save markdown files from crawled pages"""
         self.logger.info(f"Saving markdown docs to: {output_dir}")
         
@@ -509,7 +510,7 @@ class Docs2LLMs:
             file_path.parent.mkdir(parents=True, exist_ok=True)
             
             # Generate markdown content
-            markdown_content = self._generate_page_markdown(page)
+            markdown_content = self._generate_page_markdown(page, include_related)
             
             # Save to file
             self.logger.debug(f"Saving markdown to: {file_path}")
@@ -535,7 +536,7 @@ class Docs2LLMs:
             
         return safe_path
 
-    def _generate_page_markdown(self, page: Dict) -> str:
+    def _generate_page_markdown(self, page: Dict, include_related: bool = True) -> str:
         """Generate markdown content for a page"""
         output = []
         
@@ -551,12 +552,13 @@ class Docs2LLMs:
         if page.get('content'):
             output.append(page['content'])
         
-        # Add link section if there are internal links
-        internal_links = [link for link in page.get('links', []) 
-                         if link['href'].startswith(page['url'].split('/')[0])]
-        if internal_links:
-            output.append("\n## Related Pages\n")
-            for link in internal_links:
-                output.append(f"- [{link['text']}]({link['href']})")
+        # Add link section if there are internal links and it's not disabled
+        if include_related:
+            internal_links = [link for link in page.get('links', []) 
+                            if link['href'].startswith(page['url'].split('/')[0])]
+            if internal_links:
+                output.append("\n## Related Pages\n")
+                for link in internal_links:
+                    output.append(f"- [{link['text']}]({link['href']})")
         
         return "\n\n".join(output)

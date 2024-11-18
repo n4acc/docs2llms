@@ -37,10 +37,14 @@ docs2llms https://docs.example.com/ -d
 
 ### Options
 
-- `-o, --output`: Output file path for llms.txt (default: llms.txt)
-- `-m, --markdown-dir`: Directory to save markdown files 
+- `url`: The URL of the documentation to convert
+- `-o, --output`: Output file path (default: llms.txt)
+- `-m, --markdown-dir`: Directory to save markdown files
+- `-c, --config`: Path to config file
 - `-v, --verbose`: Enable verbose output
 - `-d, --debug`: Enable debug output
+- `--include-related`: Include related pages section in markdown files (disabled by default)
+
 
 ### Current Limitations
 
