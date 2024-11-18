@@ -10,11 +10,12 @@ from playwright.async_api import async_playwright
 @click.argument('url')
 @click.option('--output', '-o', default='llms.txt', help='Output file path')
 @click.option('--markdown-dir', '-m', help='Directory to save markdown files')
+@click.option('--megadump', '-md', help='Save all docs to a single markdown file')
 @click.option('--config', '-c', help='Path to config file')
 @click.option('--verbose', '-v', is_flag=True, help='Enable verbose output')
 @click.option('--debug', '-d', is_flag=True, help='Enable debug output')
 @click.option('--include-related', is_flag=True, help='Include related pages section in markdown files')
-def main(url: str, output: str, markdown_dir: str, config: str, verbose: bool, debug: bool, include_related: bool):
+def main(url: str, output: str, markdown_dir: str, megadump: str, config: str, verbose: bool, debug: bool, include_related: bool):
     """Main CLI entry point"""
     # Setup logging
     log_level = logging.DEBUG if debug else (logging.INFO if verbose else logging.WARNING)
@@ -62,6 +63,11 @@ def main(url: str, output: str, markdown_dir: str, config: str, verbose: bool, d
         f.write(result)
     
     logger.info(f"Generated {output}")
+    
+    # Generate megadump if requested
+    if megadump:
+        logger.debug(f"Creating megadump file: {megadump}")
+        converter.create_megadump(pages, megadump)
 
 if __name__ == '__main__':
     main() 

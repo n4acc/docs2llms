@@ -39,13 +39,22 @@ docs2llms https://docs.example.com/ -d
 
 - `url`: The URL of the documentation to convert
 - `-o, --output`: Output file path (default: llms.txt)
-- `-m, --markdown-dir`: Directory to save markdown files
+- `-m, --markdown-dir`: Directory to save individual markdown files
+- `-md, --megadump`: Save all documentation to a single markdown file
 - `-c, --config`: Path to config file
 - `-v, --verbose`: Enable verbose output
 - `-d, --debug`: Enable debug output
 - `--include-related`: Include related pages section in markdown files (disabled by default)
 
+## Features
 
+- Converts documentation to llms.txt format
+- Optionally saves clean markdown versions of pages
+- Creates a single markdown file with all documentation
+- Configurable crawling depth and limits
+- Support for JavaScript-rendered content
+- Clean output without navigation elements and unwanted content
+  
 ### Current Limitations
 
 - May miss some documentation pages due to JavaScript rendering

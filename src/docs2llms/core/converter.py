@@ -562,3 +562,57 @@ class Docs2LLMs:
                     output.append(f"- [{link['text']}]({link['href']})")
         
         return "\n\n".join(output)
+
+    def create_megadump(self, pages: List[Dict], output_file: str):
+        """Combine all documentation into a single markdown file"""
+        self.logger.info(f"Creating megadump file: {output_file}")
+        
+        output = []
+        
+        # Add title and description from first page
+        if pages:
+            title = pages[0].get('title', 'Documentation')
+            output.append(f"# {title} - Complete Documentation\n")
+            
+            description = pages[0].get('description', 'Complete documentation dump.')
+            output.append(f"> {description}\n")
+        
+        # Add table of contents
+        output.append("\n## Table of Contents\n")
+        for i, page in enumerate(pages, 1):
+            title = page.get('title', f'Page {i}')
+            output.append(f"{i}. [{title}](#{self._make_anchor(title)})")
+        
+        # Add content from each page
+        for i, page in enumerate(pages, 1):
+            output.append(f"\n\n{'#' * 2} {page.get('title', f'Page {i}')}\n")
+            
+            if page.get('description'):
+                output.append(f"> {page.get('description')}\n")
+                
+            if page.get('content'):
+                output.append(page['content'])
+                
+            # Add source URL
+            output.append(f"\n*Source: [{page['url']}]({page['url']})*")
+            
+            # Add separator between pages
+            if i < len(pages):
+                output.append("\n---\n")
+        
+        # Write to file
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(output))
+        
+        self.logger.info(f"Megadump created with {len(pages)} pages")
+
+    def _make_anchor(self, text: str) -> str:
+        """Convert text to GitHub-style anchor"""
+        # Convert to lowercase and replace spaces with hyphens
+        anchor = text.lower().replace(' ', '-')
+        # Remove any character that isn't alphanumeric or hyphen
+        anchor = re.sub(r'[^\w\-]', '', anchor)
+        return anchor
