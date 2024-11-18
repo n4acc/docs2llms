@@ -3,7 +3,7 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from typing import Optional
 from pathlib import Path
-from .parser import DocParser
+from ..core.parser import DocParser
 from urllib.parse import urlparse
 
 class DocsSpider(CrawlSpider):
